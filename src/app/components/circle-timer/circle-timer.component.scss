@@ -19,6 +19,10 @@
     .value {
       box-shadow: inset 0 0 10px #000000b5;
     }
+
+    .timer-hover {
+      opacity: 1;
+    }
   }
 
   &:active {
@@ -119,5 +123,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.75s;
+  transition: all 0.4s;
+}
+
+.timer-hover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  background-color: rgb(15, 16, 35);
+  opacity: 0;
+  transition: opacity 0.5s;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--play {
+    background-image: url('/assets/icons/play.svg');
+  }
+
+  &--pause {
+    background-image: url('/assets/icons/pause.svg');
+  }
 }

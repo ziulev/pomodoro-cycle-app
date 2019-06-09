@@ -9,7 +9,7 @@ export class TimerService implements OnDestroy {
   private _value = 0;
   private counter = 0;
   private limit: number;
-  private timerPaused: boolean;
+  private _timerPaused: boolean;
   private timerSubscription: Subscription;
 
   get value(): number {
@@ -18,6 +18,10 @@ export class TimerService implements OnDestroy {
 
   get timerStarted(): boolean {
     return !!this.timerSubscription;
+  }
+
+  get timerPaused(): boolean {
+    return this._timerPaused;
   }
 
   get progress(): number {
@@ -34,7 +38,7 @@ export class TimerService implements OnDestroy {
     this.limit = limit;
 
     this.timerSubscription = timer(0, 1000).subscribe(_ => {
-      if (!this.timerPaused && !(this.limit === this.counter)) {
+      if (!this._timerPaused && !(this.limit === this.counter)) {
         this.counter++;
         this._value = this.limit - this.counter;
       }
@@ -42,7 +46,7 @@ export class TimerService implements OnDestroy {
   }
 
   togglePause() {
-    this.timerPaused = !this.timerPaused;
+    this._timerPaused = !this._timerPaused;
   }
 
   ngOnDestroy() {

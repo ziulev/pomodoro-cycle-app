@@ -4,5 +4,6 @@
   (pressed)="onPressedCircle()"
   [value]="timerService.value | minutes"
   [progress]="timerService.progress"
+  [timerPaused]="!timerService.timerStarted || timerService.timerPaused"
 ></app-circle-timer>
 <app-scorer></app-scorer>

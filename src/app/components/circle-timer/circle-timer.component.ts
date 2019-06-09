@@ -9,6 +9,7 @@ export class CircleTimerComponent implements OnInit {
   @Output() pressed = new EventEmitter<boolean>();
   @Input() progress: number;
   @Input() value: number;
+  @Input() timerPaused: boolean;
 
   constructor() {}
 

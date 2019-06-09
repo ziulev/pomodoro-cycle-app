@@ -6,5 +6,10 @@
     <div class="timer-background">
       <div class="value">{{ value }}</div>
     </div>
+    <div
+      class="timer-hover timer-hover--play"
+      [class.timer-hover--play]="timerPaused"
+      [class.timer-hover--pause]="!timerPaused"
+    ></div>
   </div>
 </div>
