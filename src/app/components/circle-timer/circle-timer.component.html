@@ -1,15 +1,16 @@
 <div class="circulate" (click)="pressed.emit(true)">
-  <div class="circle">
-    <div class="wave _one" [style.top]="progress + '%'"></div>
-    <div class="wave _two" [style.top]="progress + '%'"></div>
-    <div class="wave _three" [style.top]="progress + '%'"></div>
+  <div class="circle" [class.circle--break]="timer?.type === timerTypeEnum.break">
+    <div class="wave _one" [style.top]="progress"></div>
+    <div class="wave _two" [style.top]="progress"></div>
+    <div class="wave _three" [style.top]="progress"></div>
     <div class="timer-background">
-      <div class="value">{{ value }}</div>
+      <div class="value">{{ timer?.value | minutes }}</div>
     </div>
     <div
       class="timer-hover timer-hover--play"
-      [class.timer-hover--play]="timerPaused"
-      [class.timer-hover--pause]="!timerPaused"
+      [class.timer-hover--pause]="timer?.started && !timer?.paused"
+      [class.timer-hover--play]="!timer?.started || timer?.paused"
+      [class.timer-hover--ended]="isEnded"
     ></div>
   </div>
 </div>

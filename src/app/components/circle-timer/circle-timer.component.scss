@@ -34,20 +34,22 @@
   }
 }
 
-.circulate .circle {
+.circle {
   width: 250px;
   height: 250px;
   margin: auto;
   border-radius: 100%;
-  // border: 4px solid #2e2d6a;
-  // background: linear-gradient(to left top, #5380fa, #64dde7);
   background: linear-gradient(to right, #ff8a00, #da1b60);
   position: relative;
-  // overflow: hidden;
   transform: translateZ(0);
+  transition: all 0.5s;
+
+  &--break {
+    background: linear-gradient(to right, #00c9ff, #1bda9e);
+  }
 }
 
-.circulate .wave {
+.wave {
   opacity: 0.4;
   position: absolute;
   top: 100%;
@@ -56,24 +58,25 @@
   width: 250px;
   height: 250px;
   margin-left: -125px;
-  margin-top: -265px;
+  margin-top: -250px;
+
   transform-origin: 50% 50%;
   border-radius: 43%;
   animation: humming 10s infinite linear;
   transition: all 1s;
 }
 
-.circulate .wave._three {
+.wave._three {
   animation: humming 5s infinite linear;
 }
 
-.circulate .wave._two {
+.wave._two {
   animation: humming 40s infinite linear;
   opacity: 1;
   background: #0f1023;
 }
 
-.circulate .box:after {
+.box:after {
   content: '';
   display: block;
   left: 0;
@@ -143,10 +146,16 @@
   background-repeat: no-repeat;
 
   &--play {
-    background-image: url('/assets/icons/play.svg');
+    background-image: url('assets/icons/play.svg');
+    opacity: 1;
   }
 
   &--pause {
-    background-image: url('/assets/icons/pause.svg');
+    background-image: url('assets/icons/pause.svg');
+  }
+
+  &--ended {
+    opacity: 1;
+    background-image: none;
   }
 }

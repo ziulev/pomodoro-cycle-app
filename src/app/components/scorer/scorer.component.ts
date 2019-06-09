@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ITimer } from '../../services/timer.service';
 
 @Component({
   selector: 'app-scorer',
   templateUrl: './scorer.component.html',
   styleUrls: ['./scorer.component.scss']
 })
-export class ScorerComponent implements OnInit {
+export class ScorerComponent {
+  @Input() timer: ITimer;
 
-  constructor() { }
-
-  ngOnInit() {
+  get scores(): boolean[] {
+    return Array.from({ length: this.timer.maxScore }).map((_, index) => index + 1 <= this.timer.score);
   }
-
 }

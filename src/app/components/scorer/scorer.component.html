@@ -1,10 +1,3 @@
 <div class="scorer">
-  <div class="scorer__dot scorer__dot--active"></div>
-  <div class="scorer__dot scorer__dot--active"></div>
-  <div class="scorer__dot scorer__dot--active"></div>
-  <div class="scorer__dot scorer__dot--active"></div>
-  <div class="scorer__dot scorer__dot--active"></div>
-  <div class="scorer__dot"></div>
-  <div class="scorer__dot"></div>
-  <div class="scorer__dot"></div>
+  <div *ngFor="let goal of scores" class="scorer__dot " [class.scorer__dot--active]="goal"></div>
 </div>

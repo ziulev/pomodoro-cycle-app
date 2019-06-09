@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ITimer } from '../../services/timer.service';
+import { TimerTypeEnum } from './../../services/timer.service';
 
 @Component({
   selector: 'app-circle-timer',
@@ -7,11 +9,22 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class CircleTimerComponent implements OnInit {
   @Output() pressed = new EventEmitter<boolean>();
-  @Input() progress: number;
-  @Input() value: number;
-  @Input() timerPaused: boolean;
+  @Input() timer: ITimer;
+  public timerTypeEnum = TimerTypeEnum;
 
   constructor() {}
 
   ngOnInit() {}
+
+  get progress(): string {
+    if (this.isEnded) {
+      return '0%';
+    }
+
+    return this.timer.progress === 0 ? '100%' : `${this.timer.progress}%`;
+  }
+
+  get isEnded(): boolean {
+    return this.timer.score === this.timer.maxScore;
+  }
 }
