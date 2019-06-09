@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Tray } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -23,10 +23,11 @@ function createWindow() {
     fullscreen: false,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    icon: __dirname + 'Icon.icns'
   });
 
-  const tray = new Tray(path.join(__dirname, 'tray-icon.png'));
+  // const tray = new Tray(path.join(__dirname, 'tray-icon.png'));
 
   // tray.setHighlightMode('always');
   // tray.setTitle('Test title');
