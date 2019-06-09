@@ -18,7 +18,7 @@ export class CircleTimerComponent implements OnInit {
 
   get progress(): string {
     if (this.isEnded) {
-      return '0%';
+      return 'calc(0% - 5px)';
     }
 
     return this.timer.progress === 0 ? '100%' : `${this.timer.progress}%`;
