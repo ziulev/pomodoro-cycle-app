@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-
+import * as childProcess from 'child_process';
 // If you import a module but never use any of the imported values other than as TypeScript types,
 // the resulting javascript file will look as if you never imported the module at all.
-import { ipcRenderer, webFrame, remote } from 'electron';
-import * as childProcess from 'child_process';
+import { ipcRenderer, remote, webFrame } from 'electron';
 import * as fs from 'fs';
 
 @Injectable()
 export class ElectronService {
-
   ipcRenderer: typeof ipcRenderer;
   webFrame: typeof webFrame;
   remote: typeof remote;
@@ -31,4 +29,7 @@ export class ElectronService {
     return window && window.process && window.process.type;
   }
 
+  showWindow() {
+    ipcRenderer.send('show-window');
+  }
 }

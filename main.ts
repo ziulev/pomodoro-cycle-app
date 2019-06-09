@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -81,6 +81,10 @@ try {
     if (win === null) {
       createWindow();
     }
+  });
+
+  ipcMain.on('show-window', () => {
+    win.show();
   });
 } catch (e) {
   // Catch Error

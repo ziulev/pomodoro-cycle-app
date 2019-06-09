@@ -1,5 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
+import { ElectronService } from './electron.service';
 
 export interface ITimer {
   value: number;
@@ -38,6 +39,8 @@ export class TimerService implements OnDestroy {
   private timerPaused: boolean;
   private timerSubscription: Subscription;
   private currentType: TimerTypeEnum = TimerTypeEnum.default;
+
+  constructor(private electronService: ElectronService) {}
 
   get timer(): ITimer {
     return {
@@ -89,10 +92,10 @@ export class TimerService implements OnDestroy {
     this.timerStarted = false;
     if (this.currentType === TimerTypeEnum.default) {
       this.score++;
+      this.electronService.showWindow();
     }
 
     if (this.score < this.config.maxScore) {
-      console.log(123, this.progress);
       this.counter = 0;
       this.value = 0;
     }
