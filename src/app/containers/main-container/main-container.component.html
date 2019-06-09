@@ -1,4 +1,8 @@
 <app-controls [controls]="controls" [isSingleRight]="true" class="controls"></app-controls>
 
-<app-circle-timer></app-circle-timer>
+<app-circle-timer
+  (pressed)="onPressedCircle()"
+  [value]="timerService.value | minutes"
+  [progress]="timerService.progress"
+></app-circle-timer>
 <app-scorer></app-scorer>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-circle-timer',
@@ -7,6 +7,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class CircleTimerComponent implements OnInit {
   @Output() pressed = new EventEmitter<boolean>();
+  @Input() progress: number;
+  @Input() value: number;
 
   constructor() {}
 
