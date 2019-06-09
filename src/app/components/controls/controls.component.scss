@@ -1,0 +1,15 @@
+.control {
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 15px;
+  cursor: pointer;
+  outline: none;
+
+  &--single-right {
+    background-color: #00000047;
+    border-bottom-left-radius: 50%;
+  }
+}

@@ -1,0 +1,122 @@
+:host {
+  display: block;
+  padding-top: 40px;
+}
+
+.circulate {
+  width: 250px;
+  height: 250px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 100%;
+  box-shadow: 0 0 50px #0000008c;
+  transition: all 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 20px #0000008c;
+
+    .value {
+      box-shadow: inset 0 0 10px #000000b5;
+    }
+  }
+
+  &:active {
+    box-shadow: 0 0 5px #0000008c;
+
+    .value {
+      box-shadow: inset 0 0 5px #000000b5;
+    }
+  }
+}
+
+.circulate .circle {
+  width: 250px;
+  height: 250px;
+  margin: auto;
+  border-radius: 100%;
+  // border: 4px solid #2e2d6a;
+  // background: linear-gradient(to left top, #5380fa, #64dde7);
+  background: linear-gradient(to right, #ff8a00, #da1b60);
+  position: relative;
+  // overflow: hidden;
+  transform: translateZ(0);
+}
+
+.circulate .wave {
+  opacity: 0.4;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  background: rgba(15, 16, 35, 0.56);
+  width: 250px;
+  height: 250px;
+  margin-left: -125px;
+  margin-top: -265px;
+  transform-origin: 50% 50%;
+  border-radius: 43%;
+  animation: humming 10s infinite linear;
+}
+
+.circulate .wave._three {
+  animation: humming 5s infinite linear;
+}
+
+.circulate .wave._two {
+  animation: humming 40s infinite linear;
+  opacity: 1;
+  background: #0f1023;
+}
+
+.circulate .box:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes humming {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+
+.timer-background {
+  position: absolute;
+  width: 175px;
+  height: 175px;
+  // background-color: #262255;
+  background-image: linear-gradient(-130deg, #07274e 0%, #2e002f 100%);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  border-radius: 100%;
+  display: flex;
+}
+
+.value {
+  margin: auto;
+  font-size: 42px;
+  // font-family: monospace;
+  // font-weight: bold;
+  color: #f3f3f3;
+  user-select: none;
+  font-family: 'Signika', sans-serif;
+  box-shadow: inset 0 0 20px #000000b5;
+  border-radius: 50%;
+  width: 175px;
+  height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.75s;
+}

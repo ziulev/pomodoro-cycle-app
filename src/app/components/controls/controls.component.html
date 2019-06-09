@@ -1,0 +1,7 @@
+<div
+  *ngFor="let control of controls"
+  class="control"
+  [class.control--single-right]="isSingleRight"
+  [style.backgroundImage]="'url(/assets/icons/' + control.icon + '.svg)'"
+  [routerLink]="control.path"
+></div>

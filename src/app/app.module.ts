@@ -1,23 +1,21 @@
-import 'reflect-metadata';
-import '../polyfills';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
-
+import { BrowserModule } from '@angular/platform-browser';
 // NG Translate
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { ElectronService } from './providers/electron.service';
-
-import { WebviewDirective } from './directives/webview.directive';
-
+import 'reflect-metadata';
+import '../polyfills';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import { CircleTimerComponent } from './components/circle-timer/circle-timer.component';
+import { ScorerComponent } from './components/scorer/scorer.component';
+import { InfoContainerComponent } from './containers/info-container/info-container.component';
+import { MainContainerComponent } from './containers/main-container/main-container.component';
+import { WebviewDirective } from './directives/webview.directive';
+import { ElectronService } from './providers/electron.service';
+import { ControlsComponent } from './components/controls/controls.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -27,8 +25,12 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    WebviewDirective
+    WebviewDirective,
+    CircleTimerComponent,
+    ScorerComponent,
+    MainContainerComponent,
+    InfoContainerComponent,
+    ControlsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (HttpLoaderFactory),
+        useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
     })
@@ -46,4 +48,4 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [ElectronService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,16 +1,21 @@
-import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { InfoContainerComponent } from './containers/info-container/info-container.component';
+import { MainContainerComponent } from './containers/main-container/main-container.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: HomeComponent
-    }
+  {
+    path: '',
+    component: MainContainerComponent
+  },
+  {
+    path: 'info',
+    component: InfoContainerComponent
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true})],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
