@@ -10,8 +10,8 @@ import { TimerService } from '../../services/timer.service';
 export class MainContainerComponent {
   public controls: IControl[] = [
     {
-      path: '/info',
-      icon: 'info'
+      path: '/preferences',
+      icon: 'switch-on'
     }
   ];
 

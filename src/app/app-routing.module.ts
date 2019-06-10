@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InfoContainerComponent } from './containers/info-container/info-container.component';
 import { MainContainerComponent } from './containers/main-container/main-container.component';
+import { PreferencesContainerComponent } from './containers/preferences-container/preferences-container.component';
 
 const routes: Routes = [
   {
@@ -9,8 +9,8 @@ const routes: Routes = [
     component: MainContainerComponent
   },
   {
-    path: 'info',
-    component: InfoContainerComponent
+    path: 'preferences',
+    component: PreferencesContainerComponent
   }
 ];
 

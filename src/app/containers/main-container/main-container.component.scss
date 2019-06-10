@@ -1,4 +1,10 @@
 .controls {
   display: flex;
   justify-content: flex-end;
+  opacity: 0.3;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: 1;
+  }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IControl } from '../../components/controls/controls.component';
 
 @Component({
   selector: 'app-info-container',
@@ -7,13 +6,6 @@ import { IControl } from '../../components/controls/controls.component';
   styleUrls: ['./info-container.component.scss']
 })
 export class InfoContainerComponent implements OnInit {
-  public controls: IControl[] = [
-    {
-      path: '/',
-      icon: 'left-arrow'
-    }
-  ];
-
   constructor() {}
 
   ngOnInit() {}

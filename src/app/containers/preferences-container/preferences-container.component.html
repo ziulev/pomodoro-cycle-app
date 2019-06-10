@@ -1,0 +1,9 @@
+<app-controls class="controls" [controls]="controls" class="controls"></app-controls>
+
+<app-underlay>
+  <app-switch
+    label="Auto start next"
+    [defaultChecked]="configService?.autostart"
+    (changed)="onChangedAutoSave($event)"
+  ></app-switch>
+</app-underlay>

@@ -17,6 +17,9 @@ import { MainContainerComponent } from './containers/main-container/main-contain
 import { WebviewDirective } from './directives/webview.directive';
 import { ElectronService } from './services/electron.service';
 import { MinutesPipe } from './pipes/minutes.pipe';
+import { SwitchComponent } from './components/switch/switch.component';
+import { PreferencesContainerComponent } from './containers/preferences-container/preferences-container.component';
+import { UnderlayComponent } from './components/underlay/underlay.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -32,7 +35,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainContainerComponent,
     InfoContainerComponent,
     ControlsComponent,
-    MinutesPipe
+    MinutesPipe,
+    SwitchComponent,
+    PreferencesContainerComponent,
+    UnderlayComponent
   ],
   imports: [
     BrowserModule,
