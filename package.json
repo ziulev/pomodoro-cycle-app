@@ -1,5 +1,5 @@
 {
-  "name": "pomodoro",
+  "name": "pomodoro_cycle",
   "version": "0.0.1",
   "author": {
     "name": "Denis Zyulev",
@@ -12,7 +12,8 @@
     "typescript",
     "sass",
     "mac os",
-    "pomodoro app"
+    "pomodoro app",
+    "pomodoro cycle"
   ],
   "main": "main.js",
   "private": true,
