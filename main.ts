@@ -36,7 +36,7 @@ function createWindow() {
     require('electron-reload')(__dirname, {
       electron: require(`${__dirname}/node_modules/electron`)
     });
-    win.loadURL('http://localhost:4200');
+    win.loadURL('http://localhost:4201');
   } else {
     win.loadURL(
       url.format({
@@ -58,6 +58,20 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null;
   });
+
+  // Just hide window if was pressed close button in the top panel
+  if (process.platform === 'darwin') {
+    let forceQuit = false;
+    app.on('before-quit', () => {
+      forceQuit = true;
+    });
+    win.on('close', event => {
+      if (!forceQuit) {
+        event.preventDefault();
+        app.hide();
+      }
+    });
+  }
 }
 
 try {
