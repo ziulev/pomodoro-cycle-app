@@ -3,6 +3,7 @@
   "directories": {
     "output": "release/"
   },
+  "appId": "com.pomodoro-cycle",
   "files": [
     "**/*",
     "!**/*.ts",
@@ -17,15 +18,25 @@
     "!_config.yml",
     "!karma.conf.js",
     "!tsconfig.json",
-    "!tslint.json"
+    "!tslint.json",
+    "embedded.provisionprofile"
   ],
   "win": {
     "icon": "dist",
     "target": ["portable"]
   },
   "mac": {
-    "icon": "dist",
-    "target": ["dmg"]
+    "category": "public.app-category.productivity",
+    "entitlements": "build/entitlements.mac.plist",
+    "icon": "dist/favicon.icns",
+    "target": ["pkg", "dmg", "zip", "mas"]
+  },
+  "mas": {
+    "type": "distribution",
+    "category": "public.app-category.productivity",
+    "entitlements": "build/entitlements.mas.plist",
+    "entitlementsInherit": "build/entitlements.mas.inherit.plist",
+    "icon": "dist/favicon.icns"
   },
   "linux": {
     "icon": "dist",
