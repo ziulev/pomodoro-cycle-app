@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IControl } from '../../components/controls/controls.component';
-import { ConfigService } from './../../services/config.service';
+import { ConfigEnum, ConfigService } from './../../services/config.service';
 
 @Component({
   selector: 'app-preferences-container',
@@ -14,12 +14,13 @@ export class PreferencesContainerComponent implements OnInit {
       icon: 'left-arrow'
     }
   ];
+  public configEnum = ConfigEnum;
 
   constructor(public configService: ConfigService) {}
 
   ngOnInit() {}
 
-  public onChangedAutoSave(value: boolean) {
-    this.configService.autostart = value;
+  public onChangedControl(key: ConfigEnum, value: boolean) {
+    this.configService.setValue(key, value);
   }
 }

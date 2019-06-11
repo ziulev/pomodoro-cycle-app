@@ -1,6 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
-import { ConfigService } from './config.service';
+import { AudioService, AudioSourcesEnum } from './audio.service';
+import { ConfigEnum, ConfigService } from './config.service';
 import { ElectronService } from './electron.service';
 
 export interface ITimer {
@@ -29,8 +30,8 @@ export interface ITimerConfig {
 })
 export class TimerService implements OnDestroy {
   private config: ITimerConfig = {
-    defaultLimit: 30000,
-    breakLimit: 10000,
+    defaultLimit: 24000,
+    breakLimit: 300,
     maxScore: 8
   };
   private value = 0;
@@ -40,8 +41,14 @@ export class TimerService implements OnDestroy {
   private timerPaused: boolean;
   private timerSubscription: Subscription;
   private currentType: TimerTypeEnum = TimerTypeEnum.default;
+  private audioSourcesEnum = AudioSourcesEnum;
+  private configEnum = ConfigEnum;
 
-  constructor(private electronService: ElectronService, private configService: ConfigService) {}
+  constructor(
+    private electronService: ElectronService,
+    private configService: ConfigService,
+    private audioService: AudioService
+  ) {}
 
   get timer(): ITimer {
     return {
@@ -63,7 +70,7 @@ export class TimerService implements OnDestroy {
     return Math.floor((this.value / this.limit) * 100);
   }
 
-  toggleStart(config: ITimerConfig) {
+  toggleStart(config?: ITimerConfig) {
     if (this.timerSubscription) {
       if (this.timerStarted) {
         this.togglePause();
@@ -74,11 +81,23 @@ export class TimerService implements OnDestroy {
       return;
     }
 
-    this.config = config;
+    if (config) {
+      this.config = config;
+    }
+
     this.timerStarted = true;
 
     this.timerSubscription = timer(0, 1000).subscribe(_ => {
       if (this.timerStarted && !this.timerPaused) {
+        // Play sound
+        if (this.counter + 1 === this.limit && this.configService.getValue(this.configEnum.audioEnabled)) {
+          if (this.currentType === TimerTypeEnum.default) {
+            this.audioService.play(this.audioSourcesEnum.default);
+          } else {
+            this.audioService.play(this.audioSourcesEnum.break);
+          }
+        }
+
         if (this.limit === this.counter) {
           this.onEndedInterval();
         } else {
@@ -101,7 +120,7 @@ export class TimerService implements OnDestroy {
       this.counter = 0;
       this.value = 0;
 
-      if (this.configService.autostart) {
+      if (this.configService.getValue(this.configEnum.autostartEnabled)) {
         this.timerStarted = true;
       }
     }

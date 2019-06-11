@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 
+export enum ConfigEnum {
+  autostartEnabled = 'autostart',
+  audioEnabled = 'audio-enabled'
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigService {
-  private autostartStorageKey = 'autostart';
-
   constructor(private storageService: StorageService) {}
 
-  set autostart(value: boolean) {
-    this.storageService.set(this.autostartStorageKey, value);
+  setValue(key: ConfigEnum, value: boolean) {
+    this.storageService.set(key, value);
   }
 
-  get autostart(): boolean {
-    return this.storageService.get(this.autostartStorageKey);
+  getValue(key: ConfigEnum): boolean {
+    return this.storageService.get(key);
   }
 }

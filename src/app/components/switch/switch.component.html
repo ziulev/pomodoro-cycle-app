@@ -1,7 +1,7 @@
 <div class="control">
   <div class="control__checkbox">
-    <input type="checkbox" class="switch" id="thing2" (change)="changed.emit(model)" [(ngModel)]="model" />
-    <label for="thing2"></label>
+    <input type="checkbox" class="switch" [id]="id" (change)="changed.emit(model)" [(ngModel)]="model" />
+    <label [for]="id"></label>
   </div>
   <div class="control__label">
     {{ label }}

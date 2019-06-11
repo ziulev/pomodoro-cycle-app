@@ -1,9 +1,17 @@
 <app-controls class="controls" [controls]="controls" class="controls"></app-controls>
 
-<app-underlay>
+<app-underlay class="control">
   <app-switch
     label="Auto start next"
-    [defaultChecked]="configService?.autostart"
-    (changed)="onChangedAutoSave($event)"
+    [defaultChecked]="configService?.getValue(configEnum.autostartEnabled)"
+    (changed)="onChangedControl(configEnum.autostartEnabled, $event)"
+  ></app-switch>
+</app-underlay>
+
+<app-underlay class="control">
+  <app-switch
+    label="Sounds enabled"
+    [defaultChecked]="configService?.getValue(configEnum.audioEnabled)"
+    (changed)="onChangedControl(configEnum.audioEnabled, $event)"
   ></app-switch>
 </app-underlay>

@@ -10,6 +10,11 @@ export class SwitchComponent implements OnChanges {
   @Input() defaultChecked: boolean;
   @Output() changed = new EventEmitter<boolean>();
   public model: boolean;
+  public id: string;
+
+  constructor() {
+    this.id = Math.ceil(Math.random() * 1000).toString();
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes.defaultChecked) {
