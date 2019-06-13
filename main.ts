@@ -59,6 +59,10 @@ function createWindow() {
     win = null;
   });
 
+  app.on('activate', function() {
+    win.show();
+  });
+
   // Just hide window if was pressed close button in the top panel
   if (process.platform === 'darwin') {
     let forceQuit = false;
@@ -68,7 +72,8 @@ function createWindow() {
     win.on('close', event => {
       if (!forceQuit) {
         event.preventDefault();
-        app.hide();
+        // app.hide();
+        win.hide();
       }
     });
   }
