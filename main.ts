@@ -10,7 +10,7 @@ function initMenu() {
   const template: Electron.MenuItemConstructorOptions[] = [
     {
       label: 'View',
-      submenu: [{ role: 'reload' }, { role: 'togglefullscreen' }]
+      submenu: [{ role: 'about' }, { role: 'reload' }]
     },
     {
       role: 'window',
