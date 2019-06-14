@@ -1,10 +1,43 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
+
+function initMenu() {
+  const template: Electron.MenuItemConstructorOptions[] = [
+    {
+      label: 'View',
+      submenu: [{ role: 'reload' }, { role: 'togglefullscreen' }]
+    },
+    {
+      role: 'window',
+      submenu: [
+        { role: 'minimize' },
+        { role: 'hide' },
+        { role: 'quit' },
+        { type: 'separator' },
+        { label: 'Pomodoro Cycle', accelerator: 'Cmd+O', click: () => win.show() }
+      ]
+    },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Learn More',
+          click() {
+            require('electron').shell.openExternal('https://electron.atom.io');
+          }
+        }
+      ]
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+}
 
 function createWindow() {
   // const electronScreen = screen;
@@ -77,6 +110,7 @@ function createWindow() {
       }
     });
   }
+  initMenu();
 }
 
 try {
