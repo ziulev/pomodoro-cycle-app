@@ -15,3 +15,19 @@
     (changed)="onChangedControl(configEnum.audioEnabled, $event)"
   ></app-switch>
 </app-underlay>
+
+<app-underlay class="control">
+  <app-number-input
+    label="Main cycle"
+    [defaultValue]="configService?.getValue(configEnum.mainCycleMinutes)"
+    (changed)="onChangedControl(configEnum.mainCycleMinutes, $event)"
+  ></app-number-input>
+</app-underlay>
+
+<app-underlay class="control">
+  <app-number-input
+    label="Break cycle"
+    [defaultValue]="configService?.getValue(configEnum.breakCycleMinutes)"
+    (changed)="onChangedControl(configEnum.breakCycleMinutes, $event)"
+  ></app-number-input>
+</app-underlay>

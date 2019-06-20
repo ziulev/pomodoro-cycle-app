@@ -16,32 +16,21 @@ export interface ITimer {
 }
 
 export enum TimerTypeEnum {
-  default,
+  main,
   break
-}
-
-export interface ITimerConfig {
-  defaultLimit: number;
-  breakLimit: number;
-  maxScore: number;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class TimerService implements OnDestroy {
-  private config: ITimerConfig = {
-    defaultLimit: 24000,
-    breakLimit: 300,
-    maxScore: 8
-  };
   private value = 0;
   private counter = 0;
   private score = 0;
   private timerStarted: boolean;
   private timerPaused: boolean;
   private timerSubscription: Subscription;
-  private currentType: TimerTypeEnum = TimerTypeEnum.default;
+  private currentType: TimerTypeEnum = TimerTypeEnum.main;
   private audioSourcesEnum = AudioSourcesEnum;
   private configEnum = ConfigEnum;
 
@@ -60,31 +49,29 @@ export class TimerService implements OnDestroy {
       paused: this.timerPaused,
       type: this.currentType,
       score: this.score,
-      maxScore: this.config.maxScore
+      maxScore: 8
     };
   }
 
   get limit(): number {
-    return this.currentType === TimerTypeEnum.default ? this.config.defaultLimit : this.config.breakLimit;
+    return this.currentType === TimerTypeEnum.main
+      ? parseInt(this.configService.getValue(this.configEnum.mainCycleMinutes), 10) * 60
+      : parseInt(this.configService.getValue(this.configEnum.breakCycleMinutes), 10) * 60;
   }
 
   get progress(): number {
     return Math.floor((this.value / this.limit) * 100);
   }
 
-  toggleStart(config?: ITimerConfig) {
+  toggleStart() {
     if (this.timerSubscription) {
       if (this.timerStarted) {
         this.togglePause();
-      } else if (this.score < this.config.maxScore) {
+      } else if (this.score < this.timer.maxScore) {
         this.timerStarted = true;
       }
 
       return;
-    }
-
-    if (config) {
-      this.config = config;
     }
 
     this.timerStarted = true;
@@ -93,14 +80,14 @@ export class TimerService implements OnDestroy {
       if (this.timerStarted && !this.timerPaused) {
         // Play sound
         if (this.counter + 1 === this.limit && this.configService.getValue(this.configEnum.audioEnabled)) {
-          if (this.currentType === TimerTypeEnum.default) {
-            this.audioService.play(this.audioSourcesEnum.default);
+          if (this.currentType === TimerTypeEnum.main) {
+            this.audioService.play(this.audioSourcesEnum.main);
           } else {
             this.audioService.play(this.audioSourcesEnum.break);
           }
         }
 
-        if (this.limit === this.counter) {
+        if (this.limit <= this.counter) {
           this.onEndedInterval();
         } else {
           this.counter++;
@@ -117,11 +104,11 @@ export class TimerService implements OnDestroy {
     }
     this.electronService.showWindow();
 
-    if (this.currentType === TimerTypeEnum.default) {
+    if (this.currentType === TimerTypeEnum.main) {
       this.score++;
     }
 
-    if (this.score < this.config.maxScore) {
+    if (this.score < this.timer.maxScore) {
       this.counter = 0;
       this.value = 0;
 
@@ -130,7 +117,7 @@ export class TimerService implements OnDestroy {
       }
     }
 
-    this.currentType = this.currentType === TimerTypeEnum.default ? TimerTypeEnum.break : TimerTypeEnum.default;
+    this.currentType = this.currentType === TimerTypeEnum.main ? TimerTypeEnum.break : TimerTypeEnum.main;
   }
 
   togglePause() {

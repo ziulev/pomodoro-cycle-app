@@ -20,7 +20,7 @@ export class PreferencesContainerComponent implements OnInit {
 
   ngOnInit() {}
 
-  public onChangedControl(key: ConfigEnum, value: boolean) {
+  public onChangedControl(key: ConfigEnum, value: boolean | number) {
     this.configService.setValue(key, value);
   }
 }

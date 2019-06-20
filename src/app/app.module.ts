@@ -11,15 +11,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CircleTimerComponent } from './components/circle-timer/circle-timer.component';
 import { ControlsComponent } from './components/controls/controls.component';
+import { NumberInputComponent } from './components/number-input/number-input.component';
 import { ScorerComponent } from './components/scorer/scorer.component';
+import { SwitchComponent } from './components/switch/switch.component';
+import { UnderlayComponent } from './components/underlay/underlay.component';
 import { InfoContainerComponent } from './containers/info-container/info-container.component';
 import { MainContainerComponent } from './containers/main-container/main-container.component';
-import { WebviewDirective } from './directives/webview.directive';
-import { ElectronService } from './services/electron.service';
-import { MinutesPipe } from './pipes/minutes.pipe';
-import { SwitchComponent } from './components/switch/switch.component';
 import { PreferencesContainerComponent } from './containers/preferences-container/preferences-container.component';
-import { UnderlayComponent } from './components/underlay/underlay.component';
+import { WebviewDirective } from './directives/webview.directive';
+import { MinutesPipe } from './pipes/minutes.pipe';
+import { ElectronService } from './services/electron.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MinutesPipe,
     SwitchComponent,
     PreferencesContainerComponent,
-    UnderlayComponent
+    UnderlayComponent,
+    NumberInputComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,46 @@
+.control {
+  display: flex;
+  align-items: center;
+
+  &__label {
+    color: #f3f3f3;
+    user-select: none;
+    font-family: 'Signika', sans-serif;
+    margin-left: 15px;
+  }
+
+  &__wrapper {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 10px;
+    // max-width: 90px;
+  }
+
+  &__input {
+    border: none;
+    height: 36px;
+    max-width: 50px;
+    font-size: 16px;
+    margin-right: -12px;
+    text-align: center;
+    outline: none;
+  }
+
+  &__minus,
+  &__plus {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 0 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__plus {
+    // position: relative;
+    // right: 20px;
+    background-color: #ffffff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}

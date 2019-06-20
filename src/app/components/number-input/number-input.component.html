@@ -1,0 +1,16 @@
+<div class="control">
+  <div class="control__wrapper">
+    <div class="control__minus" (click)="onPlusOrMinusPressed(false)">-</div>
+    <input
+      class="control__input"
+      type="number"
+      [(ngModel)]="model"
+      (keypress)="onKeyPressed($event)"
+      (ngModelChange)="modelChanged$.next($event)"
+    />
+    <div class="control__plus" (click)="onPlusOrMinusPressed(true)">+</div>
+  </div>
+  <div class="control__label">
+    {{ label }}
+  </div>
+</div>

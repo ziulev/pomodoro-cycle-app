@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export enum AudioSourcesEnum {
-  default,
+  main,
   break
 }
 
@@ -11,7 +11,7 @@ export enum AudioSourcesEnum {
 export class AudioService {
   private sources: { type: AudioSourcesEnum; src: string }[] = [
     {
-      type: AudioSourcesEnum.default,
+      type: AudioSourcesEnum.main,
       src: 'assets/audio/default.mp3'
     },
     {

@@ -18,7 +18,6 @@ export class MainContainerComponent {
   constructor(public timerService: TimerService) {}
 
   public onPressedCircle() {
-    this.timerService.toggleStart({ defaultLimit: 2400, breakLimit: 300, maxScore: 8 });
-    // this.timerService.toggleStart({ defaultLimit: 3, breakLimit: 3, maxScore: 8 });
+    this.timerService.toggleStart();
   }
 }
