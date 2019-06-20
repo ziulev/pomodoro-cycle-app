@@ -29,7 +29,7 @@
     "category": "public.app-category.productivity",
     "entitlements": "build/entitlements.mac.plist",
     "icon": "dist/favicon.icns",
-    "target": ["pkg", "dmg", "zip", "mas"]
+    "target": ["mas"]
   },
   "mas": {
     "type": "distribution",
