@@ -1,6 +1,7 @@
 .control {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   &__label {
     color: #f3f3f3;

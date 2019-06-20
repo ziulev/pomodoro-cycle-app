@@ -1,6 +1,7 @@
 .control {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   &__label {
     color: #f3f3f3;
@@ -13,7 +14,6 @@
     display: flex;
     background-color: #ffffff;
     border-radius: 10px;
-    // max-width: 90px;
   }
 
   &__input {
@@ -37,8 +37,6 @@
   }
 
   &__plus {
-    // position: relative;
-    // right: 20px;
     background-color: #ffffff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
