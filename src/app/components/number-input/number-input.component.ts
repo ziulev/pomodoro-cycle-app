@@ -15,7 +15,11 @@ export class NumberInputComponent implements OnChanges {
   public modelChanged$ = new Subject<number>();
 
   constructor() {
-    this.modelChanged$.pipe(debounceTime(50)).subscribe(v => this.changed.emit(v));
+    this.modelChanged$.pipe(debounceTime(50)).subscribe(v => {
+      if (v && v > 0 && v <= 999) {
+        this.changed.emit(v);
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -26,7 +30,12 @@ export class NumberInputComponent implements OnChanges {
 
   public onKeyPressed(event: KeyboardEvent) {
     const number = parseInt(event.key, 10);
-    return this.model ? parseInt(`${this.model}${number}`, 10) <= 999 : number > 0;
+    if (isNaN(number)) {
+      return false;
+    }
+    return this.model
+      ? parseInt(`${this.model}${number}`, 10) <= 999 && parseInt(`${this.model}${number}`, 10) > 0
+      : number > 0;
   }
 
   public onPlusOrMinusPressed(increment: boolean) {

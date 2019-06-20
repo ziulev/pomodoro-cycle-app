@@ -10,7 +10,7 @@
 
 <app-underlay class="control">
   <app-switch
-    label="Sounds enabled"
+    label="Sounds"
     [defaultChecked]="configService?.getValue(configEnum.audioEnabled)"
     (changed)="onChangedControl(configEnum.audioEnabled, $event)"
   ></app-switch>
