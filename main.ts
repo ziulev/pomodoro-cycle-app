@@ -57,7 +57,12 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true
     },
-    icon: __dirname + 'Icon.icns'
+    icon: __dirname + 'Icon.icns',
+    show: false
+  });
+
+  win.once('ready-to-show', () => {
+    win.show();
   });
 
   // const tray = new Tray(path.join(__dirname, 'tray-icon.png'));
