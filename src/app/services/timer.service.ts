@@ -1,4 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 import { AudioService, AudioSourcesEnum } from './audio.service';
 import { ConfigEnum, ConfigService } from './config.service';
@@ -47,7 +48,8 @@ export class TimerService implements OnDestroy {
   constructor(
     private electronService: ElectronService,
     private configService: ConfigService,
-    private audioService: AudioService
+    private audioService: AudioService,
+    private router: Router
   ) {}
 
   get timer(): ITimer {
@@ -110,6 +112,9 @@ export class TimerService implements OnDestroy {
 
   onEndedInterval() {
     this.timerStarted = false;
+    if (this.router.url !== '/') {
+      this.router.navigateByUrl('/');
+    }
     this.electronService.showWindow();
 
     if (this.currentType === TimerTypeEnum.default) {
