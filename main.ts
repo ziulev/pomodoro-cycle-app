@@ -49,7 +49,7 @@ function createWindow() {
     y: 0,
     // width: size.width,
     // height: size.height,
-    width: 500,
+    width: 400,
     height: 500,
     resizable: false,
     titleBarStyle: 'hidden',

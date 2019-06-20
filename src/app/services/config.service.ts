@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { isNullOrUndefined } from 'util';
 import { StorageService } from './storage.service';
 
 export enum ConfigEnum {
@@ -17,6 +18,7 @@ export class ConfigService {
   }
 
   getValue(key: ConfigEnum): boolean {
-    return this.storageService.get(key);
+    const value = this.storageService.get(key);
+    return isNullOrUndefined(value) ? true : value;
   }
 }
