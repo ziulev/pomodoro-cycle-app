@@ -27,9 +27,8 @@
   },
   "mac": {
     "category": "public.app-category.productivity",
-    "entitlements": "build/entitlements.mac.plist",
     "icon": "dist/favicon.icns",
-    "target": ["mas"]
+    "target": ["dmg"]
   },
   "mas": {
     "type": "distribution",
