@@ -16,7 +16,7 @@ The Pomodoro Technique is a time management method developed by Francesco Cirill
 * Desktop notifications
 * Interval setting
 
-![screenshot](/screenshots/1.png?raw=true)
+![screenshot](/screenshots/1.png?raw=true =250x)
 
 ## To develop
 
