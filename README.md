@@ -6,7 +6,7 @@ The Pomodoro Technique is a time management method developed by Francesco Cirill
 
 | OS             | Version       | Link                                                                    |
 | -------------- |:-------------:| :---------------------------------------------------------------------: |
-| macOS          | 0.0.6         | <a href="https://yadi.sk/d/fs2XT6KHRWw3Gw" target="_blank">download</a> |
+| macOS          | 0.0.6         | <a href="https://yadi.sk/d/fs2XT6KHRWw3Gw">download</a> |
 
 
 <a href="https://github.com/jet8a/pomodoro-cycle-app/releases" target="_blank">All releases</a>
