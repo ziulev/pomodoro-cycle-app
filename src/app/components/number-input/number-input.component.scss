@@ -6,15 +6,15 @@
   &__label {
     color: #f3f3f3;
     user-select: none;
-    font-family: 'Signika', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-left: 15px;
     font-size: 15px;
   }
 
   &__wrapper {
     display: flex;
-    background-color: #ffffff;
     border-radius: 10px;
+    color: #f3f3f3;
   }
 
   &__input {
@@ -25,6 +25,8 @@
     margin-right: -12px;
     text-align: center;
     outline: none;
+    color: #f3f3f3;
+    background-color: transparent;
   }
 
   &__minus,
@@ -38,7 +40,6 @@
   }
 
   &__plus {
-    background-color: #ffffff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
   }

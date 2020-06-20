@@ -57,7 +57,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true
     },
-    icon: __dirname + 'Icon.icns',
+    // icon: __dirname + '/src/favicon.png',
     show: false
   });
 

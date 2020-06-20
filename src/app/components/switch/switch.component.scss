@@ -1,3 +1,5 @@
+$active: #0c0e21;
+
 .control {
   display: flex;
   align-items: center;
@@ -6,7 +8,7 @@
   &__label {
     color: #f3f3f3;
     user-select: none;
-    font-family: 'Signika', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-left: 15px;
     font-size: 15px;
   }
@@ -22,8 +24,8 @@
   width: 54px;
   height: 34px;
   box-sizing: border-box;
-  background: #fff;
-  border: 2px solid #ddd;
+  // background: #fff;
+  border: 2px solid $active;
   border-radius: 9999px;
   transition: 300ms;
 }
@@ -35,18 +37,18 @@
   width: 30px;
   height: 30px;
   border: none;
-  box-shadow: 0 5px 5px -1px rgba(0, 0, 0, 0.2), 0 0 0 2px #ddd;
+  box-shadow: 0 5px 5px -1px $active, 0 0 0 2px $active;
 }
 .switch:checked + label {
-  border: 2px solid #4bd865;
-  box-shadow: inset 0 0 0 calc((30px / 2) + 2px) #4bd865;
+  border: 2px solid $active;
+  box-shadow: inset 0 0 0 calc((30px / 2) + 2px) $active;
 }
 .switch:checked + label::after {
   left: calc(50px - 30px);
-  box-shadow: 0 5px 5px -1px rgba(0, 0, 0, 0.2), 0 0 0 2px #4bd865;
+  box-shadow: 0 5px 5px -1px $active, 0 0 0 2px $active;
 }
 .switch:not(:checked) + label:hover:active {
-  box-shadow: inset 0 0 0 calc((30px / 2) + 2px + 2) #ddd;
+  box-shadow: inset 0 0 0 calc((30px / 2) + 2px + 2) $active;
 }
 .switch + label:hover:active::after {
   width: calc(30px + 5px);
